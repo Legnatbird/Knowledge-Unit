@@ -35,7 +35,6 @@ public class Proyect {
     Utils.print("Insert planned date of start:");
     this.plannedDateOfStart = this.getDate();
     Utils.print("Insert planned date of end:");
-    day = Utils.inputNumbers.nextInt();
     this.plannedDateOfEnd = this.getDate();
     Utils.print("Insert budget:");
     this.budget = Utils.inputNumbers.nextFloat();

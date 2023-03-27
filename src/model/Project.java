@@ -4,7 +4,7 @@ import java.util.GregorianCalendar;
 
 import utils.Utils;
 
-public class Proyect {
+public class Project {
 
   enum State {
     WAITING_FOR_APPROVAL, APPROVED, REJECTED
@@ -21,14 +21,14 @@ public class Proyect {
   private State state;
   
   
-  public Proyect() {
+  public Project() {
     this.state = State.WAITING_FOR_APPROVAL;
   }
   
   public void approve() {
     this.state = State.APPROVED;
-    Utils.print("Proyect approved");
-    Utils.print("Insert proyect name:");
+    Utils.print("Project approved");
+    Utils.print("Insert project name:");
     this.projectName = Utils.inputString.readLine();
     Utils.print("Insert client name:");
     this.clientName = Utils.inputString.readLine();
@@ -57,7 +57,7 @@ public class Proyect {
 
   public void reject() {
     this.state = State.REJECTED;
-    Utils.print("Proyect rejected");
+    Utils.print("Project rejected");
   }
 
   public void getState(){

@@ -33,21 +33,10 @@ public class Proyect {
     Utils.print("Insert client name:");
     this.clientName = Utils.inputString.readLine();
     Utils.print("Insert planned date of start:");
-    Utils.print("Insert year:");
-    int year = Utils.inputNumbers.nextInt();
-    Utils.print("Insert month:");
-    int month = Utils.inputNumbers.nextInt();
-    Utils.print("Insert day:");
-    int day = Utils.inputNumbers.nextInt();
-    this.plannedDateOfStart = Utils.getGregorianCalendar(year, month, day);
+    this.plannedDateOfStart = this.getDate();
     Utils.print("Insert planned date of end:");
-    Utils.print("Insert year:");
-    year = Utils.inputNumbers.nextInt();
-    Utils.print("Insert month:");
-    month = Utils.inputNumbers.nextInt();
-    Utils.print("Insert day:");
     day = Utils.inputNumbers.nextInt();
-    this.plannedDateOfEnd = Utils.getGregorianCalendar(year, month, day);
+    this.plannedDateOfEnd = this.getDate();
     Utils.print("Insert budget:");
     this.budget = Utils.inputNumbers.nextFloat();
     Utils.print("Insert project managers name:");
@@ -55,6 +44,16 @@ public class Proyect {
     Utils.print("Insert project managers phone:");
     this.projectManagersPhone = Utils.inputString.readLine().split(",");
     this.stages = new Stages();
+  }
+  
+  private GregorianCalendar getDate() {
+    Utils.print("Insert year:");
+    int year = Utils.inputNumbers.nextInt();
+    Utils.print("Insert month:");
+    int month = Utils.inputNumbers.nextInt();
+    Utils.print("Insert day:");
+    int day = Utils.inputNumbers.nextInt();
+    return Utils.getGregorianCalendar(year, month, day);
   }
 
   public void reject() {

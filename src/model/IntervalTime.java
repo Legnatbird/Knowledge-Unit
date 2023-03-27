@@ -1,5 +1,6 @@
 package model;
 
+// import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
 
 public class IntervalTime {
@@ -13,6 +14,7 @@ public class IntervalTime {
   }
 
   public GregorianCalendar getStartDate() {
+    //SimpleDateFormat("dd-MM-yyyy").format(startDate.getTime());
     return startDate;
   }
 

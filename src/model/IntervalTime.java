@@ -21,4 +21,8 @@ public class IntervalTime {
   public GregorianCalendar getEndDate() {
     return endDate;
   }
+
+  public String getFullTime() {
+    return "Start date: " + startDate.getTime() + " End date: " + endDate.getTime();
+  }
 }

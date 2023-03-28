@@ -4,11 +4,12 @@ import java.util.GregorianCalendar;
 
 public class Stage {
 
-  private IntervalTime realTime;
   private GregorianCalendar startDate;
   private GregorianCalendar endDate;
   private IntervalTime plannedTime;
+  private boolean approved = false;
   private boolean active = false;
+  private IntervalTime realTime;
   private String stageName;
 
   public Stage(String name) {
@@ -24,17 +25,26 @@ public class Stage {
     return plannedTime;
   }
 
+  public boolean getApprovedStatus() {
+    return this.approved;
+  }
+
   public void setPlannedIntervalTime(IntervalTime plannedTime) {
     this.plannedTime = plannedTime;
   }
   
   public void setActive() {
     this.active = true;
+    this.startDate = new GregorianCalendar();
   }
 
   public void setInactive() {
     this.active = false;
     this.endDate = new GregorianCalendar();
+  }
+
+  public void setApproved() {
+    this.approved = true;
   }
 
   public boolean isActive() {

@@ -10,11 +10,11 @@ public class Project {
     WAITING_FOR_APPROVAL, APPROVED, REJECTED
   }
 
+  private GregorianCalendar plannedDateOfStart;
+  private GregorianCalendar plannedDateOfEnd;
   private String[] projectManagersPhone;
   private String[] projectManagersName;
   private String projectName;
-  private GregorianCalendar plannedDateOfStart;
-  private GregorianCalendar plannedDateOfEnd;
   private String clientName;
   private Stages stages;
   private float budget;
@@ -63,13 +63,13 @@ public class Project {
   public void getState(){
     switch (this.state) {
       case WAITING_FOR_APPROVAL:
-        System.out.println("Waiting for approval");
+        Utils.print("Waiting for approval");
         break;
       case APPROVED:
-        System.out.println("Approved");
+        Utils.print("Approved");
         break;
       case REJECTED:
-        System.out.println("Rejected");
+        Utils.print("Rejected");
         break;
     }
   }

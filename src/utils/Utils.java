@@ -14,5 +14,5 @@ public class Utils {
     GregorianCalendar date = new GregorianCalendar();
     date.set(year, month, day);
     return date;
-  }  
+  }
 }

@@ -1,13 +1,12 @@
 package model;
 
-// import java.util.GregorianCalendar;
-
 public class Stages {
 
   private Stage[] stages = new Stage[6];
+  private int activeStage = 0;
+
   public Stages() {
     createStages();
-    setStageActive(0);
   }
 
   private void createStages() {
@@ -20,20 +19,17 @@ public class Stages {
   }
 
   public void setStageActive(int stage) {
-    for (int i = 0; i < stages.length; i++) {
-      stages[i].setInactive();
+    if (stage > 0 && stage < 7) {
+      stages[activeStage].setApproved();
+      stages[activeStage].setInactive();
+      stages[stage - 1].setActive();
+      activeStage = stage - 1;
+    } else {
+      System.out.println("Stage number is out of range");
     }
-    stages[stage - 1].setActive();
   }
 
   public String getActiveStage() {
-    String activeStage = "";
-    for (int i = 0; i < stages.length; i++) {
-      if (stages[i].isActive()) {
-        activeStage = stages[i].getStageName();
-        break;
-      }
-    }
-    return activeStage;
+    return stages[activeStage].getStageName();
   }
 }

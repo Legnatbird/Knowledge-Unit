@@ -19,6 +19,14 @@ public class Utils {
     return date;
   }
 
+  public static void menu() {
+    print("1. Create project");
+    print("2. End a project stage");
+    print("3. Create capsule");
+    print("4. Approve capsule");
+    print("5. Publish capsule");
+  }
+
   public static String validateLearning(){
     String learning = inputString.readLine();
     if (learning.contains("#") && learning.lastIndexOf("#") != 0) {

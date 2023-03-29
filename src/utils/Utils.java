@@ -21,7 +21,7 @@ public class Utils {
 
   public static void menu() {
     print("1. Create project");
-    print("2. End a project stage");
+    print("2. End actual project stage");
     print("3. Create capsule");
     print("4. Approve capsule");
     print("5. Publish capsule");
@@ -42,7 +42,7 @@ public class Utils {
     if (type.equals("Technician") || type.equals("Management") || type.equals("Domain") || type.equals("Experience")) {
       return type;
     } else {
-      print("Type must be technician, management, domain or experience");
+      print("Type must be Technician, Management, Domain or Experience");
       return validateType();
     }
   }

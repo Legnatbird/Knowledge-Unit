@@ -93,6 +93,10 @@ public class Project {
     Utils.print(this.budget);
   }
 
+  public Stages getStages() {
+    return this.stages;
+  }
+  
   public Stage getStage() {
     return this.stages.getActiveStage();
   }

@@ -6,8 +6,8 @@ import utils.Utils;
 public class Capsule {
 
   private boolean approved = false;
-  private String collaboratorName;
-  private String collaboratorPost;
+  private String[] collaboratorName;
+  private String[] collaboratorPost;
   private GregorianCalendar date;
   private String description;
   private String type;
@@ -15,8 +15,8 @@ public class Capsule {
   private int id;
 
   public Capsule(String collaboratorName, String collaboratorPost, String description, String learning, String type) {
-    this.collaboratorName = collaboratorName;
-    this.collaboratorPost = collaboratorPost;
+    this.collaboratorName = collaboratorName.split(",");
+    this.collaboratorPost = collaboratorPost.split(",");
     this.description = description;
     this.learning = learning;
     this.type = type;
@@ -34,8 +34,9 @@ public class Capsule {
   }
 
   public void printCapsule() {
-    Utils.print("Collaborator name: " + this.collaboratorName);
-    Utils.print("Collaborator post: " + this.collaboratorPost);
+    for (int i = 0; i < this.collaboratorName.length; i++) {
+      Utils.print("Collaborator: " + this.collaboratorName[i] + " " + this.collaboratorPost[i]);
+    }
     Utils.print("Description: " + this.description);
     Utils.print("Type: " + this.type);
     Utils.print("Learning: " + this.learning);
@@ -54,12 +55,13 @@ public class Capsule {
   }
   
   public String getKeyWords() {
+    String keywords = "";
     for (int i = 0; i < this.learning.length(); i++) {
       if (this.learning.charAt(i) == '#') {
-        return this.learning.substring(i + 1, this.learning.indexOf('#', i + 1));
+        keywords = this.learning.substring(i + 1, this.learning.indexOf('#', i + 1));
       }
     }
-    return "";
+    return keywords;
     /*
     String keyword = "";
     for (int i = 0; i < this.learning.length(); i++) {
@@ -82,14 +84,6 @@ public class Capsule {
 
   public boolean getApproved() {
     return approved;
-  }
-
-  public String getCollaboratorName() {
-    return collaboratorName;
-  }
-
-  public String getCollaboratorPost() {
-    return collaboratorPost;
   }
 
   public String getDescription() {

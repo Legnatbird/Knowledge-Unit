@@ -1,5 +1,7 @@
 package model;
 
+import utils.Utils;
+
 public class Stages {
 
   private final Stage[] stages = new Stage[6];
@@ -25,7 +27,7 @@ public class Stages {
       stages[stage - 1].setActive();
       activeStage = stage - 1;
     } else {
-      System.out.println("Stage number is out of range");
+      Utils.print("Stage number is out of range");
     }
   }
 

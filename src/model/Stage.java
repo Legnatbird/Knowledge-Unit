@@ -10,7 +10,7 @@ public class Stage {
   private boolean approved = false;
   private boolean active = false;
   private IntervalTime realTime;
-  private String stageName;
+  private final String stageName;
 
   public Stage(String name) {
     this.stageName = name;

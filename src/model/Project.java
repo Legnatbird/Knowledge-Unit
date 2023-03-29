@@ -62,26 +62,20 @@ public class Project {
 
   public void getState(){
     switch (this.state) {
-      case WAITING_FOR_APPROVAL:
-        Utils.print("Waiting for approval");
-        break;
-      case APPROVED:
-        Utils.print("Approved");
-        break;
-      case REJECTED:
-        Utils.print("Rejected");
-        break;
+      case WAITING_FOR_APPROVAL -> Utils.print("Waiting for approval");
+      case APPROVED -> Utils.print("Approved");
+      case REJECTED -> Utils.print("Rejected");
     }
   }
   public void getProjectManagersName() {
-    for (int i = 0; i < this.projectManagersName.length; i++) {
-      Utils.print(this.projectManagersName[i]);
+    for (String name : this.projectManagersName) {
+      Utils.print(name);
     }
   }
 
   public void getProjectManagersPhone() {
-    for (int i = 0; i < this.projectManagersPhone.length; i++) {
-      Utils.print(this.projectManagersPhone[i]);
+    for (String phone : this.projectManagersPhone) {
+      Utils.print(phone);
     }
   }
 

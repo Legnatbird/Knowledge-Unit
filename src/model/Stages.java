@@ -2,7 +2,7 @@ package model;
 
 public class Stages {
 
-  private Stage[] stages = new Stage[6];
+  private final Stage[] stages = new Stage[6];
   private int activeStage = 0;
 
   public Stages() {

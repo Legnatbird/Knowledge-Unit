@@ -5,8 +5,8 @@ import java.util.GregorianCalendar;
 
 public class IntervalTime {
 
-  private GregorianCalendar startDate;
-  private GregorianCalendar endDate;
+  private final GregorianCalendar startDate;
+  private final GregorianCalendar endDate;
 
   public IntervalTime(GregorianCalendar startDate, GregorianCalendar endDate) {
     this.startDate = startDate;

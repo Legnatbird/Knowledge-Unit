@@ -8,8 +8,8 @@ public class Capsule {
     TECHNICIAN, MANAGEMENT, DOMAIN, EXPERIENCE
   }
 
-  private String colaboratorName;
-  private String colaboratorPost;
+  private String collaboratorName;
+  private String collaboratorPost;
   private GregorianCalendar date;
   private String description;
   private capsuleType type;
@@ -20,12 +20,12 @@ public class Capsule {
     System.out.println("Capsule created");
   }
 
-  public void setColaboratorName(String name) {
-    this.colaboratorName = name;
+  public void setCollaboratorName(String name) {
+    this.collaboratorName = name;
   }
 
-  public void setColaboratorPost(String post) {
-    this.colaboratorPost = post;
+  public void setCollaboratorPost(String post) {
+    this.collaboratorPost = post;
   }
 
   public void setDescription(String description) {
@@ -49,12 +49,12 @@ public class Capsule {
     this.date = new GregorianCalendar();
   }
 
-  public String getColaboratorName() {
-    return colaboratorName;
+  public String getCollaboratorName() {
+    return collaboratorName;
   }
 
-  public String getColaboratorPost() {
-    return colaboratorPost;
+  public String getCollaboratorPost() {
+    return collaboratorPost;
   }
 
   public String getDescription() {

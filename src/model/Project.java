@@ -18,12 +18,11 @@ public class Project {
   private Stages stages;
   private float budget;
   private State state;
-  
-  
+
   public Project() {
     this.state = State.WAITING_FOR_APPROVAL;
   }
-  
+
   public void approve() {
     this.state = State.APPROVED;
     Utils.print("Project approved");
@@ -43,7 +42,7 @@ public class Project {
     this.projectManagersPhone = Utils.inputString.readLine().split(",");
     this.stages = new Stages();
   }
-  
+
   private GregorianCalendar getDate() {
     Utils.print("Insert year:");
     int year = Utils.inputNumbers.nextInt();
@@ -59,13 +58,17 @@ public class Project {
     Utils.print("Project rejected");
   }
 
-  public void getState(){
+  public void getState() {
     switch (this.state) {
-      case WAITING_FOR_APPROVAL -> Utils.print("Waiting for approval");
-      case APPROVED -> Utils.print("Approved");
-      case REJECTED -> Utils.print("Rejected");
+      case WAITING_FOR_APPROVAL:
+        Utils.print("Waiting for approval");
+      case APPROVED:
+        Utils.print("Approved");
+      case REJECTED:
+        Utils.print("Rejected");
     }
   }
+
   public void getProjectManagersName() {
     for (String name : this.projectManagersName) {
       Utils.print(name);
@@ -101,4 +104,4 @@ public class Project {
   public void getPlannedDateOfEnd() {
     Utils.print(this.plannedDateOfEnd);
   }
-} 
+}

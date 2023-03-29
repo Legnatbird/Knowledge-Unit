@@ -35,17 +35,6 @@ public class Stage {
     this.capsuleCount++;
   }
 
-  public void approveCapsule(int id) {
-    for (int i = 0; i < this.capsuleCount; i++) {
-      if (this.capsules[i].getId() == id) {
-        this.capsules[i].setApproved();
-        Utils.print("Capsule approved");
-        return;
-      }
-    }
-    Utils.print("Capsule not found");
-  }
-
   public void searchCapsuleByKeyword(String keyword) {
     for (int i = 0; i < this.capsuleCount; i++) {
       if (this.capsules[i].getKeyWords().contains(keyword)) {

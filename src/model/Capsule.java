@@ -27,7 +27,8 @@ public class Capsule {
 
   public void generateHTML() {
     if (this.approved) {
-      Utils.print("Generating HTML");
+      Utils.print("Generating HTML...");
+      Utils.print("Capsule published!");
     } else {
       Utils.print("Capsule not approved");
     }

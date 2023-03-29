@@ -25,6 +25,8 @@ public class Utils {
     print("3. Create capsule");
     print("4. Approve capsule");
     print("5. Publish capsule");
+    print("6. Show capsules by type");
+    print("7. Exit");
   }
 
   public static String validateLearning(){

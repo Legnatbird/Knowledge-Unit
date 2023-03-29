@@ -31,7 +31,7 @@ public class Stages {
     }
   }
 
-  public String getActiveStage() {
-    return stages[activeStage].getStageName();
+  public Stage getActiveStage() {
+    return stages[activeStage];
   }
 }

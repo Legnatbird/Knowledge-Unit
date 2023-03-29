@@ -5,24 +5,24 @@ import utils.Utils;
 
 public class Capsule {
 
-  enum CapsuleType {
-    TECHNICIAN, MANAGEMENT, DOMAIN, EXPERIENCE
-  }
-
-  private GregorianCalendar endDate;
+  private boolean approved = false;
   private String collaboratorName;
   private String collaboratorPost;
   private GregorianCalendar date;
   private String description;
-  private boolean approved;
-  private CapsuleType type;
+  private String type;
   private String learning;
   private int id;
 
-  public Capsule() {
-    Utils.print("Capsule created");
+  public Capsule(String collaboratorName, String collaboratorPost, String description, String learning, String type) {
+    this.collaboratorName = collaboratorName;
+    this.collaboratorPost = collaboratorPost;
+    this.description = description;
+    this.learning = learning;
+    this.type = type;
+    this.date = new GregorianCalendar();
     this.id = (int) (Math.random() * 1000000);
-
+    Utils.print("Capsule created");
   }
 
   public void generateHTML() {
@@ -44,44 +44,15 @@ public class Capsule {
     Utils.print("Approved: " + this.approved);
   }
 
-  public void setCollaboratorName(String name) {
-    this.collaboratorName = name;
-  }
-
-  public void setCollaboratorPost(String post) {
-    this.collaboratorPost = post;
-  }
-
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
-  public void setType(CapsuleType type) {
-    this.type = type;
-  }
-
-  public void setLearning(String learning) {
-    if (this.learning.contains("#") && this.learning.lastIndexOf("#") != 0) {
-      this.learning = learning;
-    } else {
-      Utils.print("Learning must contain a keyword with # at the beginning and at the end");
-    }
-  }
-
-  
-  public void setId(int id) {
-    this.id = id;
-  }
-
-  public void setDate() {
+  public void setApproved() {
+    this.approved = true;
     this.date = new GregorianCalendar();
   }
 
-  public void setApproved() {
-    this.approved = true;
-    this.endDate = new GregorianCalendar();
+  public void setId(int id) {
+    this.id = id;
   }
-
+  
   public String getKeyWords() {
     for (int i = 0; i < this.learning.length(); i++) {
       if (this.learning.charAt(i) == '#') {
@@ -106,7 +77,7 @@ public class Capsule {
   }
 
   public GregorianCalendar getEndDate() {
-    return endDate;
+    return date;
   }
 
   public boolean getApproved() {
@@ -125,7 +96,7 @@ public class Capsule {
     return description;
   }
 
-  public CapsuleType getType() {
+  public String getType() {
     return type;
   }
 

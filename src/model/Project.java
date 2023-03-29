@@ -90,8 +90,8 @@ public class Project {
     Utils.print(this.budget);
   }
 
-  public void getStages() {
-    Utils.print(this.stages.getActiveStage());
+  public Stage getStage() {
+    return this.stages.getActiveStage();
   }
 
   public void getPlannedDateOfStart() {

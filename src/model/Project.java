@@ -3,8 +3,13 @@ package model;
 import java.util.GregorianCalendar;
 import utils.Utils;
 
+/*
+ * Project class
+ */
 public class Project {
-
+  /*
+   * Stages enum
+   */
   enum State {
     WAITING_FOR_APPROVAL, APPROVED, REJECTED
   }
@@ -19,10 +24,15 @@ public class Project {
   private float budget;
   private State state;
 
+  /*
+   * Constructor
+   */
   public Project() {
     this.state = State.WAITING_FOR_APPROVAL;
   }
-
+  /*
+   * Approve project
+   */
   public void approve() {
     this.state = State.APPROVED;
     Utils.print("Project approved");
@@ -41,8 +51,12 @@ public class Project {
     Utils.print("Insert project managers phone:");
     this.projectManagersPhone = Utils.inputString.readLine().split(",");
     this.stages = new Stages();
+    Utils.print("Setups completed");
   }
-
+  /*
+   * Get date
+   * @return GregorianCalendar
+   */
   private GregorianCalendar getDate() {
     Utils.print("Insert year:");
     int year = Utils.inputNumbers.nextInt();
@@ -52,12 +66,16 @@ public class Project {
     int day = Utils.inputNumbers.nextInt();
     return Utils.getGregorianCalendar(year, month, day);
   }
-
+  /*
+   * Reject project
+   */
   public void reject() {
     this.state = State.REJECTED;
     Utils.print("Project rejected");
   }
-
+  /*
+   * Get state
+   */
   public void getState() {
     switch (this.state) {
       case WAITING_FOR_APPROVAL:
@@ -68,43 +86,63 @@ public class Project {
         Utils.print("Rejected");
     }
   }
-
+  /*
+   * Get project managers name
+   */
   public void getProjectManagersName() {
     for (String name : this.projectManagersName) {
       Utils.print(name);
     }
   }
-
+  /*
+   * Get project managers phone
+   */
   public void getProjectManagersPhone() {
     for (String phone : this.projectManagersPhone) {
       Utils.print(phone);
     }
   }
-
+  /*
+   * Get project name
+   */
   public void getProjectName() {
     Utils.print(this.projectName);
   }
-
+  /*
+   * Get client name
+   */
   public void getClientName() {
     Utils.print(this.clientName);
   }
-
+  /*
+   * Get budget
+   */
   public void getBudget() {
     Utils.print(this.budget);
   }
-
+  /*
+   * Get stages
+   * @return Stages
+   */
   public Stages getStages() {
     return this.stages;
   }
-  
+  /*
+   * Get stage
+   * @return Stage
+   */
   public Stage getStage() {
     return this.stages.getActiveStage();
   }
-
+  /*
+   * Get planned date of start
+   */
   public void getPlannedDateOfStart() {
     Utils.print(this.plannedDateOfStart);
   }
-
+  /*
+   * Get planned date of end
+   */
   public void getPlannedDateOfEnd() {
     Utils.print(this.plannedDateOfEnd);
   }

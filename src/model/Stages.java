@@ -6,11 +6,16 @@ public class Stages {
 
   private final Stage[] stages = new Stage[6];
   private int activeStage = 0;
-
+  /*
+   * Constructor
+   * Create all stages
+   */
   public Stages() {
     createStages();
   }
-
+  /*
+   * Create all stages
+   */
   private void createStages() {
     stages[0] = new Stage("Start");
     stages[1] = new Stage("Analysis");
@@ -19,7 +24,10 @@ public class Stages {
     stages[4] = new Stage("Closure");
     stages[5] = new Stage("Monitoring and Control");
   }
-
+  /*
+   * Set active stage
+   * @param stage
+   */
   public void setStageActive(int stage) {
     if (stage > 0 && stage < 7) {
       stages[activeStage].setApproved();
@@ -30,7 +38,10 @@ public class Stages {
       Utils.print("Stage number is out of range");
     }
   }
-
+  /*
+   * Get active stage
+   * @return active stage
+   */
   public Stage getActiveStage() {
     return stages[activeStage];
   }

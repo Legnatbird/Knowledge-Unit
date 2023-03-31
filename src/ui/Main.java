@@ -5,12 +5,14 @@ import model.Project;
 import utils.Utils;
 
 public class Main {
-
     private static final Project[] projects = new Project[10];
     private static int option, projectId, capsuleId;
     private static int projectCount = 0;
 
-
+    /*
+     * Validate project number and return it if valid
+     * @return projectId
+     */
     private static int validateProject(){
         Utils.print("Insert project number: ");
         projectId = Utils.inputNumbers.nextInt();
@@ -20,7 +22,10 @@ public class Main {
         }
         return projectId;
     }
-
+    /*
+     * Main method
+     * @param args but not used
+     */
     public static void main(String[] args) {
         do {
             Utils.menu();
@@ -28,6 +33,7 @@ public class Main {
             switch (option) {
                 case 1:
                     projects[projectCount] = new Project();
+                    projects[projectCount].approve();
                     projectCount++;
                     break;
                 case 2:
@@ -53,17 +59,19 @@ public class Main {
                     break;
                 case 4:
                     validateProject();
-                    Utils.print("Insert capsule id: ");
+                    Utils.print("Insert capsule number: ");
                     capsuleId = Utils.inputNumbers.nextInt();
                     projects[projectId - 1].getStage().getCapsules()[capsuleId - 1].setApproved();
                     break;
                 case 5:
                     validateProject();
-                    Utils.print("Insert capsule id: ");
+                    Utils.print("Insert capsule number: ");
                     capsuleId = Utils.inputNumbers.nextInt();
                     projects[projectId - 1].getStage().getCapsules()[capsuleId - 1].generateHTML();
+                    break;
                 case 7:
                     Utils.print("Exit.");
+                    break;
                 default:
                     Utils.print("Invalid option");
                     break;

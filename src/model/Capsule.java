@@ -3,17 +3,28 @@ package model;
 import java.util.GregorianCalendar;
 import utils.Utils;
 
+/* 
+ * Capsule class
+ */
 public class Capsule {
 
   private boolean approved = false;
-  private String[] collaboratorName;
-  private String[] collaboratorPost;
+  private final String[] collaboratorName;
+  private final String[] collaboratorPost;
   private GregorianCalendar date;
-  private String description;
-  private String type;
-  private String learning;
+  private final String description;
+  private final String type;
+  private final String learning;
   private int id;
 
+  /*
+   * Constructor
+   * @param collaboratorName
+   * @param collaboratorPost
+   * @param description
+   * @param learning
+   * @param type
+   */
   public Capsule(String collaboratorName, String collaboratorPost, String description, String learning, String type) {
     this.collaboratorName = collaboratorName.split(",");
     this.collaboratorPost = collaboratorPost.split(",");
@@ -24,7 +35,9 @@ public class Capsule {
     this.id = (int) (Math.random() * 1000000);
     Utils.print("Capsule created");
   }
-
+  /*
+   * Generate HTML
+   */
   public void generateHTML() {
     if (this.approved) {
       Utils.print("Generating HTML...");
@@ -33,7 +46,9 @@ public class Capsule {
       Utils.print("Capsule not approved");
     }
   }
-
+  /*
+   * Print capsule information
+   */
   public void printCapsule() {
     for (int i = 0; i < this.collaboratorName.length; i++) {
       Utils.print("Collaborator: " + this.collaboratorName[i] + " " + this.collaboratorPost[i]);
@@ -45,16 +60,24 @@ public class Capsule {
     Utils.print("Date: " + this.date);
     Utils.print("Approved: " + this.approved);
   }
-
+  /*
+   * Set capsule as approved
+   */
   public void setApproved() {
     this.approved = true;
     this.date = new GregorianCalendar();
+    Utils.print("Capsule approved");
   }
-
+  /*
+   * Set capsule id
+   */
   public void setId(int id) {
     this.id = id;
   }
-  
+  /*
+   * Get capsule keywords
+   * @return keywords
+   */
   public String getKeyWords() {
     String keywords = "";
     for (int i = 0; i < this.learning.length(); i++) {
@@ -64,6 +87,7 @@ public class Capsule {
     }
     return keywords;
     /*
+    I really not test the code up, but I think it's better than the code below
     String keyword = "";
     for (int i = 0; i < this.learning.length(); i++) {
       if (this.learning.charAt(i) == '#') {
@@ -78,32 +102,11 @@ public class Capsule {
     return keyword;
     */
   }
-
-  public GregorianCalendar getEndDate() {
-    return date;
-  }
-
-  public boolean getApproved() {
-    return approved;
-  }
-
-  public String getDescription() {
-    return description;
-  }
-
-  public String getType() {
-    return type;
-  }
-
-  public String getLearning() {
-    return learning;
-  }
-
+  /*
+   * Get capsule id
+   * @return id
+   */
   public int getId() {
     return id;
-  }
-
-  public GregorianCalendar getDate() {
-    return date;
   }
 }

@@ -118,12 +118,7 @@ public class Capsule {
     StringBuilder learning = new StringBuilder();
     for (int i = 0; i < this.learning.length(); i++) {
       if (this.learning.charAt(i) == '#') {
-        for (int j = i + 1; j < this.learning.length(); j++) {
-          if (this.learning.charAt(j) == '#') {
-            i = j;
-            break;
-          }
-        }
+        i = this.learning.indexOf('#', i + 1);
       }
       learning.append(this.learning.charAt(i));
     }

@@ -105,20 +105,20 @@ public class Project {
   /*
    * Get project name
    */
-  public void getProjectName() {
-    Utils.print(this.projectName);
+  public String getProjectName() {
+    return this.projectName;
   }
   /*
    * Get client name
    */
-  public void getClientName() {
-    Utils.print(this.clientName);
+  public String getClientName() {
+    return this.clientName;
   }
   /*
    * Get budget
    */
-  public void getBudget() {
-    Utils.print(this.budget);
+  public float getBudget() {
+    return this.budget;
   }
   /*
    * Get stages
@@ -145,5 +145,18 @@ public class Project {
    */
   public void getPlannedDateOfEnd() {
     Utils.print(this.plannedDateOfEnd);
+  }
+
+  public void showLearnings(int stage) {
+    for (Capsule capsule : stages.getStage(stage).getCapsules()) {
+      capsule.getLearning();
+    }
+  }
+
+  public int capsulesLenght() {
+    for (Stage stage : stages.getStages()) {
+      return stage.getCapsules().length;
+    }
+    return 0;
   }
 }

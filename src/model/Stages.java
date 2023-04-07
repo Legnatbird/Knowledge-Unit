@@ -45,4 +45,12 @@ public class Stages {
   public Stage getActiveStage() {
     return stages[activeStage];
   }
+
+  public Stage getStage(int stage) {
+    return stages[stage];
+  }
+
+  public Stage[] getStages() {
+    return stages;
+  }
 }

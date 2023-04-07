@@ -102,9 +102,15 @@ public class Utils {
    * @return index of the project
    */
   public static int projectWithMostCapsules(Project[] projects, int projectCount) {
+    if (projects == null || projectCount < 1) {
+      return -1;
+    }
     int max = 0;
     int index = 0;
     for (int i = 0; i < projectCount; i++) {
+      if (projects[i] == null) {
+        return -1;
+      }
       if (projects[i].capsulesLength() > max) {
         max = projects[i].capsulesLength();
         index = i;

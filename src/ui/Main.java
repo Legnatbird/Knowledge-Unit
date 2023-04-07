@@ -6,9 +6,10 @@ import utils.Utils;
 
 public class Main {
     private static final Project[] projects = new Project[10];
-    private static int projectId;
     private static final int[] capsuleCount = new int[4];
+    private static final int MAX_PROJECTS = 10;
     private static int projectCount = 0;
+    private static int projectId;
 
     /*
      * Validate project number and return it if valid
@@ -35,16 +36,23 @@ public class Main {
             option = Utils.inputNumbers.nextInt();
             switch (option) {
                 case 1:
-                    projects[projectCount] = new Project();
-                    projects[projectCount].approve();
-                    projectCount++;
+                    if (projectCount == MAX_PROJECTS) {
+                        System.out.println("ERROR: Maximum number of projects reached.");
+                    } else {
+                        projects[projectCount] = new Project();
+                        projects[projectCount].approve();
+                        projectCount++;
+                    }
                     break;
                 case 2:
                     validateProject();
                     Utils.print("Stage number: ");
                     int stage = Utils.inputNumbers.nextInt();
-                    projects[projectId - 1].getStages().setStageActive(stage);
-                    break;
+                    if (stage <= 0 || stage > projects[projectId - 1].getStages().getStages().length) {
+                        Utils.print("Invalid stage number");
+                    } else {
+                        projects[projectId - 1].getStages().setStageActive(stage);
+                    }
                 case 3:
                     validateProject();
                     Utils.print("Insert collaborator name: ");
@@ -70,14 +78,21 @@ public class Main {
                     validateProject();
                     Utils.print("Insert capsule number: ");
                     capsuleId = Utils.inputNumbers.nextInt();
+                    if(capsuleId > projects[projectId - 1].getStage().getCapsules().length){
+                        Utils.print("The capsule number you entered is not valid. Please try again.");
+                        break;
+                    }
                     projects[projectId - 1].getStage().getCapsules()[capsuleId - 1].setApproved();
                     break;
                 case 5:
-                    validateProject();
-                    Utils.print("Insert capsule number: ");
-                    capsuleId = Utils.inputNumbers.nextInt();
-                    projects[projectId - 1].getStage().getCapsules()[capsuleId - 1].generateHTML();
-                    break;
+                    try {
+                        validateProject();
+                        Utils.print("Insert capsule number: ");
+                        capsuleId = Utils.inputNumbers.nextInt();
+                        projects[projectId - 1].getStage().getCapsules()[capsuleId - 1].generateHTML();
+                    } catch (Exception e) {
+                        Utils.print("Error: " + e);
+                    }
                 case 6:
                     Utils.print("Insert type: ");
                     String type1 = Utils.validateType();
@@ -91,7 +106,11 @@ public class Main {
                     }
                 case 8:
                     int maxCapsules = Utils.projectWithMostCapsules(projects, projectCount);
-                    Utils.print("The project with most capsules is: " + projects[maxCapsules].getProjectName());
+                    if (maxCapsules != -1) {
+                        Utils.print("The project with most capsules is: " + projects[maxCapsules].getProjectName());
+                    } else {
+                        Utils.print("No projects found");
+                    }
                 case 9:
                     Utils.print("Exit.");
                     break;

@@ -115,7 +115,7 @@ public class Capsule {
   }
 
   public String getLearning() {
-    String learning = "";
+    StringBuilder learning = new StringBuilder();
     for (int i = 0; i < this.learning.length(); i++) {
       if (this.learning.charAt(i) == '#') {
         for (int j = i + 1; j < this.learning.length(); j++) {
@@ -125,8 +125,8 @@ public class Capsule {
           }
         }
       }
-      learning += this.learning.charAt(i);
+      learning.append(this.learning.charAt(i));
     }
-    return learning;
+    return learning.toString();
   }
 }

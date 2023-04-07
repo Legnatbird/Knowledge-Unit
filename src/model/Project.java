@@ -149,7 +149,7 @@ public class Project {
 
   public void showLearnings(int stage) {
     for (Capsule capsule : stages.getStage(stage).getCapsules()) {
-      capsule.getLearning();
+      Utils.print(capsule.getLearning());
     }
   }
 

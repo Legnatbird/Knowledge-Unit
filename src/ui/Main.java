@@ -7,7 +7,7 @@ import utils.Utils;
 public class Main {
     private static final Project[] projects = new Project[10];
     private static int option, projectId, capsuleId;
-    private static int[] capsuleCount = new int[4];
+    private static final int[] capsuleCount = new int[4];
     private static int projectCount = 0;
 
     /*
@@ -19,7 +19,7 @@ public class Main {
         projectId = Utils.inputNumbers.nextInt();
         if (projectId > projectCount || projectId < 1) {
             Utils.print("Invalid project number");
-            validateProject();
+            return validateProject();
         }
         return projectId;
     }
@@ -58,18 +58,10 @@ public class Main {
                     Capsule capsule = new Capsule(collabName, collabPost, description, learning, type);
                     projects[projectId - 1].getStage().addCapsule(capsule);
                     switch (Utils.validateCapsule(type)) {
-                        case 0:
-                            capsuleCount[0]++;
-                            break;
-                        case 1:
-                            capsuleCount[1]++;
-                            break;
-                        case 2:
-                            capsuleCount[2]++;
-                            break;
-                        case 3:
-                            capsuleCount[3]++;
-                            break;
+                        case 0 -> capsuleCount[0]++;
+                        case 1 -> capsuleCount[1]++;
+                        case 2 -> capsuleCount[2]++;
+                        case 3 -> capsuleCount[3]++;
                     }
                     break;
                 case 4:
@@ -105,6 +97,6 @@ public class Main {
                     Utils.print("Invalid option");
                     break;
             }
-        } while (option != 8);
+        } while (option != 9);
     }
 }

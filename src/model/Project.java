@@ -153,7 +153,7 @@ public class Project {
     }
   }
 
-  public int capsulesLenght() {
+  public int capsulesLength() {
     for (Stage stage : stages.getStages()) {
       return stage.getCapsules().length;
     }

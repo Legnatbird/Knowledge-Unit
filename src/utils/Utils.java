@@ -17,7 +17,7 @@ public class Utils {
 
   public static Console inputString = System.console();
 
-  private static String[] types = { "Technician", "Management", "Domain", "Experience" };
+  private static final String[] types = { "Technician", "Management", "Domain", "Experience" };
 
   /*
    * Print method
@@ -74,8 +74,8 @@ public class Utils {
    */
   public static String validateType() {
     String type = inputString.readLine();
-    for (int i = 0; i < types.length; i++) {
-      if (type.equals(types[i])) {
+    for (String s : types) {
+      if (type.equals(s)) {
         return type;
       }
     }
@@ -105,8 +105,8 @@ public class Utils {
     int max = 0;
     int index = 0;
     for (int i = 0; i < projectCount; i++) {
-      if (projects[i].capsulesLenght() > max) {
-        max = projects[i].capsulesLenght();
+      if (projects[i].capsulesLength() > max) {
+        max = projects[i].capsulesLength();
         index = i;
       }
     }

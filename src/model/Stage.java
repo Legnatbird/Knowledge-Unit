@@ -50,12 +50,14 @@ public class Stage {
    * @param keyword
    * @return capsule information
    */
-  public void searchCapsuleByKeyword(String keyword) {
+  public Capsule searchCapsuleByKeyword(String keyword) {
     for (int i = 0; i < this.capsuleCount; i++) {
       if (this.capsules[i].getKeyWords().contains(keyword)) {
-        this.capsules[i].printCapsule();
+        return this.capsules[i];
       }
     }
+    Utils.print("Capsule not found");
+    return null;
   }
   /*
    * Return if the stage is active
@@ -130,7 +132,7 @@ public class Stage {
    * Set real interval time
    */
   private void setRealIntervalTime(IntervalTime time) {
-    this.realTime = new IntervalTime(time.getStartDate(), time.getEndDate());
+    this.realTime = new IntervalTime(time.startDate(), time.endDate());
   }
 
 }

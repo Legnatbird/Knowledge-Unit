@@ -49,7 +49,9 @@ public class Utils {
     print("6. Show capsules by type");
     print("7. Show learnings by stage");
     print("8. Check project with most capsules");
-    print("9. Exit");
+    print("9. Check if a collaborator do a capsule");
+    print("10. Check learnings of approved capsules by keyword");
+    print("11. Exit");
   }
 
   /*
@@ -119,4 +121,40 @@ public class Utils {
     return index;
   }
 
+  public static void checkCollabCapsules(Project[] projects, String collabName, int projectCount) {
+    if (projects == null || projectCount < 1) {
+      return;
+    }
+    print("Enter the collaborator name");
+    for (int i = 0; i < projectCount; i++) {
+      int length = projects[i].getCapsules().length;
+      for (int j = 0; j < length; j++) {
+        String validate = projects[i].getCapsules()[j].getCollabName();
+        if (validate.equals(collabName)) {
+          Utils.print("The collaborator " + collabName + " do a capsule in the project: " + projects[i].getProjectName());
+        }
+      }
+    }
+  }
+
+  public static String checkLearningByKeyword(Project[] projects, String keyword, int projectCount) {
+    if (projects == null || projectCount < 1) {
+      Utils.print("There are no projects");
+      return null;
+    }
+    for (int i = 0; i < projectCount; i++) {
+      int length = projects[i].getCapsules().length;
+      for (int j = 0; j < length; j++) {
+        if (!projects[i].getCapsules()[j].getApproved()) {
+          continue;
+        }
+        String validate = projects[i].getCapsules()[j].getLearning();
+        if (validate.contains(keyword)) {
+          return validate;
+        }
+      }
+    }
+    Utils.print("There are no learnings with the keyword " + keyword);
+    return null;
+  }
 }

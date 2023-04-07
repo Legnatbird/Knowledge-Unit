@@ -29,15 +29,15 @@ public class Main {
    * @param args but not used
    */
   public static void main(String[] args) {
-    int option;
-    int capsuleId;
+    int option, capsuleId;
+    String collabName, type;
     do {
       Utils.menu();
       option = Utils.inputNumbers.nextInt();
       switch (option) {
         case 1:
           if (projectCount == MAX_PROJECTS) {
-            System.out.println("ERROR: Maximum number of projects reached.");
+            Utils.print("ERROR: Maximum number of projects reached.");
           } else {
             projects[projectCount] = new Project();
             projects[projectCount].approve();
@@ -56,7 +56,7 @@ public class Main {
         case 3:
           validateProject();
           Utils.print("Insert collaborator name: ");
-          String collabName = Utils.inputString.readLine();
+          collabName = Utils.inputString.readLine();
           Utils.print("Insert collaborator post: ");
           String collabPost = Utils.inputString.readLine();
           Utils.print("Insert description: ");
@@ -64,7 +64,7 @@ public class Main {
           Utils.print("Insert learning: ");
           String learning = Utils.validateLearning();
           Utils.print("Insert type: ");
-          String type = Utils.validateType();
+          type = Utils.validateType();
           Capsule capsule = new Capsule(collabName, collabPost, description, learning, type);
           projects[projectId - 1].getStage().addCapsule(capsule);
           switch (Utils.validateCapsule(type)) {
@@ -94,9 +94,11 @@ public class Main {
             Utils.print("Error: " + e);
           }
         case 6:
-          Utils.print("Insert type: ");
-          String type1 = Utils.validateType();
-          Utils.print("The number of capsules of type " + type1 + " is: " + capsuleCount[Utils.validateCapsule(type1)]);
+          Utils.print("The number of capsules by type is: ");
+          Utils.print("1. " + capsuleCount[0] + " capsules of type Technician");
+          Utils.print("2. " + capsuleCount[1] + " capsules of type Management");
+          Utils.print("3. " + capsuleCount[2] + " capsules of type Domain");
+          Utils.print("4. " + capsuleCount[3] + " capsules of type Experience");
           break;
         case 7:
           Utils.print("Insert stage number: ");
@@ -104,6 +106,7 @@ public class Main {
           for (int i = 0; i < projectCount; i++) {
             projects[i].showLearnings(stage1);
           }
+          break;
         case 8:
           int maxCapsules = Utils.projectWithMostCapsules(projects, projectCount);
           if (maxCapsules != -1) {
@@ -111,13 +114,24 @@ public class Main {
           } else {
             Utils.print("No projects found");
           }
+          break;
         case 9:
+          Utils.print("Insert collaborator name: ");
+          collabName = Utils.inputString.readLine();
+          Utils.checkCollabCapsules(projects, collabName, projectCount);
+          break;
+        case 10:
+          Utils.print("Insert keyword: ");
+          String keyword = Utils.inputString.readLine();
+          Utils.print(Utils.checkLearningByKeyword(projects, keyword, projectCount));
+          break;
+        case 11:
           Utils.print("Exit.");
           break;
         default:
           Utils.print("Invalid option");
           break;
       }
-    } while (option != 8);
+    } while (option != 10);
   }
 }

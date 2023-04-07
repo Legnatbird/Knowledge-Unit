@@ -9,8 +9,8 @@ import utils.Utils;
 public class Capsule {
 
   private boolean approved = false;
-  private final String[] collaboratorName;
-  private final String[] collaboratorPost;
+  private final String collaboratorName;
+  private final String collaboratorPost;
   private GregorianCalendar date;
   private final String description;
   private final String type;
@@ -26,8 +26,8 @@ public class Capsule {
    * @param type
    */
   public Capsule(String collaboratorName, String collaboratorPost, String description, String learning, String type) {
-    this.collaboratorName = collaboratorName.split(",");
-    this.collaboratorPost = collaboratorPost.split(",");
+    this.collaboratorName = collaboratorName;
+    this.collaboratorPost = collaboratorPost;
     this.description = description;
     this.learning = learning;
     this.type = type;
@@ -50,9 +50,8 @@ public class Capsule {
    * Print capsule information
    */
   public void printCapsule() {
-    for (int i = 0; i < this.collaboratorName.length; i++) {
-      Utils.print("Collaborator: " + this.collaboratorName[i] + " " + this.collaboratorPost[i]);
-    }
+    Utils.print("Collaborator: " + this.collaboratorName);
+    Utils.print("Collaborator Position: " + this.collaboratorPost);
     Utils.print("Description: " + this.description);
     Utils.print("Type: " + this.type);
     Utils.print("Learning: " + this.learning);
@@ -123,5 +122,13 @@ public class Capsule {
       learning.append(this.learning.charAt(i));
     }
     return learning.toString();
+  }
+
+  public String getCollabName() {
+    return collaboratorName;
+  }
+
+  public boolean getApproved() {
+    return approved;
   }
 }

@@ -89,18 +89,22 @@ public class Project {
   /*
    * Get project managers name
    */
-  public void getProjectManagersName() {
-    for (String name : this.projectManagersName) {
-      Utils.print(name);
+  public String getProjectManagersName() {
+    StringBuilder name = new StringBuilder();
+    for (String manager : this.projectManagersName) {
+      name.append(manager).append(", ");
     }
+    return name.toString();
   }
   /*
    * Get project managers phone
    */
-  public void getProjectManagersPhone() {
-    for (String phone : this.projectManagersPhone) {
-      Utils.print(phone);
+  public String getProjectManagersPhone() {
+    StringBuilder phone = new StringBuilder();
+    for (String number : this.projectManagersPhone) {
+      phone.append(number).append(", ");
     }
+    return phone.toString();
   }
   /*
    * Get project name
@@ -137,14 +141,14 @@ public class Project {
   /*
    * Get planned date of start
    */
-  public void getPlannedDateOfStart() {
-    Utils.print(this.plannedDateOfStart);
+  public GregorianCalendar getPlannedDateOfStart() {
+    return this.plannedDateOfStart;
   }
   /*
    * Get planned date of end
    */
-  public void getPlannedDateOfEnd() {
-    Utils.print(this.plannedDateOfEnd);
+  public GregorianCalendar getPlannedDateOfEnd() {
+    return this.plannedDateOfEnd;
   }
 
   public void showLearnings(int stage) {
@@ -158,5 +162,17 @@ public class Project {
       return stage.getCapsules().length;
     }
     return 0;
+  }
+
+  public Capsule[] getCapsules() {
+    Capsule[] capsules = new Capsule[capsulesLength()];
+    int i = 0;
+    for (Stage stage : stages.getStages()) {
+      for (Capsule capsule : stage.getCapsules()) {
+        capsules[i] = capsule;
+        i++;
+      }
+    }
+    return capsules;
   }
 }

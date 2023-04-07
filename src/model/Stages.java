@@ -2,18 +2,21 @@ package model;
 
 import utils.Utils;
 
+/**
+ * Stage class
+ */
 public class Stages {
 
   private final Stage[] stages = new Stage[6];
   private int activeStage = 0;
-  /*
+  /**
    * Constructor
    * Create all stages
    */
   public Stages() {
     createStages();
   }
-  /*
+  /**
    * Create all stages
    */
   private void createStages() {
@@ -24,9 +27,9 @@ public class Stages {
     stages[4] = new Stage("Closure");
     stages[5] = new Stage("Monitoring and Control");
   }
-  /*
+  /**
    * Set active stage
-   * @param stage
+   * @param stage to be set active
    */
   public void setStageActive(int stage) {
     if (stage > 0 && stage < 7) {
@@ -38,7 +41,7 @@ public class Stages {
       Utils.print("Stage number is out of range");
     }
   }
-  /*
+  /**
    * Get active stage
    * @return active stage
    */
@@ -46,10 +49,18 @@ public class Stages {
     return stages[activeStage];
   }
 
+  /**
+   * Get stage by number
+   * @param stage number
+   * @return stage by index
+   */
   public Stage getStage(int stage) {
-    return stages[stage];
+    return stages[stage - 1];
   }
-
+  /**
+   * Get all stages
+   * @return stages
+   */
   public Stage[] getStages() {
     return stages;
   }

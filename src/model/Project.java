@@ -3,11 +3,11 @@ package model;
 import java.util.GregorianCalendar;
 import utils.Utils;
 
-/*
+/**
  * Project class
  */
 public class Project {
-  /*
+  /**
    * Stages enum
    */
   enum State {
@@ -24,13 +24,13 @@ public class Project {
   private float budget;
   private State state;
 
-  /*
+  /**
    * Constructor
    */
   public Project() {
     this.state = State.WAITING_FOR_APPROVAL;
   }
-  /*
+  /**
    * Approve project
    */
   public void approve() {
@@ -53,7 +53,7 @@ public class Project {
     this.stages = new Stages();
     Utils.print("Setups completed");
   }
-  /*
+  /**
    * Get date
    * @return GregorianCalendar
    */
@@ -66,14 +66,14 @@ public class Project {
     int day = Utils.inputNumbers.nextInt();
     return Utils.getGregorianCalendar(year, month, day);
   }
-  /*
+  /**
    * Reject project
    */
   public void reject() {
     this.state = State.REJECTED;
     Utils.print("Project rejected");
   }
-  /*
+  /**
    * Get state
    */
   public void getState() {
@@ -86,8 +86,9 @@ public class Project {
         Utils.print("Rejected");
     }
   }
-  /*
+  /**
    * Get project managers name
+   * @return String project managers name
    */
   public String getProjectManagersName() {
     StringBuilder name = new StringBuilder();
@@ -96,8 +97,9 @@ public class Project {
     }
     return name.toString();
   }
-  /*
+  /**
    * Get project managers phone
+   * @return String project managers phone
    */
   public String getProjectManagersPhone() {
     StringBuilder phone = new StringBuilder();
@@ -106,57 +108,71 @@ public class Project {
     }
     return phone.toString();
   }
-  /*
+  /**
    * Get project name
+   * @return String project name
    */
   public String getProjectName() {
     return this.projectName;
   }
-  /*
+  /**
    * Get client name
+   * @return String client name
    */
   public String getClientName() {
     return this.clientName;
   }
-  /*
+  /**
    * Get budget
+   * @return float budget
    */
   public float getBudget() {
     return this.budget;
   }
-  /*
+  /**
    * Get stages
    * @return Stages
    */
   public Stages getStages() {
     return this.stages;
   }
-  /*
+
+  /**
    * Get stage
-   * @return Stage
+   * @return Stage active stage
    */
   public Stage getStage() {
     return this.stages.getActiveStage();
   }
-  /*
+  /**
    * Get planned date of start
+   * @return GregorianCalendar planned date of start
    */
   public GregorianCalendar getPlannedDateOfStart() {
     return this.plannedDateOfStart;
   }
-  /*
+  /**
    * Get planned date of end
+   * @return GregorianCalendar planned date of end
    */
   public GregorianCalendar getPlannedDateOfEnd() {
     return this.plannedDateOfEnd;
   }
 
+  /**
+   * Show learnings
+   * @param stage integer
+   */
   public void showLearnings(int stage) {
     for (Capsule capsule : stages.getStage(stage).getCapsules()) {
       Utils.print(capsule.getLearning());
     }
   }
 
+  /**
+   * Show learnings
+   * @return capsules length
+   */
   public int capsulesLength() {
     for (Stage stage : stages.getStages()) {
       return stage.getCapsules().length;
@@ -164,6 +180,10 @@ public class Project {
     return 0;
   }
 
+  /**
+   * Get capsules
+   * @return capsules
+   */
   public Capsule[] getCapsules() {
     Capsule[] capsules = new Capsule[capsulesLength()];
     int i = 0;

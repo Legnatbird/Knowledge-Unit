@@ -2,7 +2,7 @@ package model;
 
 import java.util.GregorianCalendar;
 import utils.Utils;
-/*
+/**
  * Stage class
  */
 public class Stage {
@@ -17,15 +17,15 @@ public class Stage {
   private IntervalTime realTime;
   private int capsuleCount = 0;
 
-  /*
+  /**
    * Constructor
-   * @param name
+   * @param name of the stage
    */
   public Stage(String name) {
     this.stageName = name;
     this.startDate = new GregorianCalendar();
   }
-  /*
+  /**
    * Set stage as active
    * @param capsule to be added
    */
@@ -45,9 +45,9 @@ public class Stage {
     }
     this.capsuleCount++;
   }
-  /*
+  /**
    * Search for a capsule by keyword
-   * @param keyword
+   * @param keyword to be searched
    * @return capsule information
    */
   public Capsule searchCapsuleByKeyword(String keyword) {
@@ -59,42 +59,42 @@ public class Stage {
     Utils.print("Capsule not found");
     return null;
   }
-  /*
+  /**
    * Return if the stage is active
    * @return active
    */
   public boolean isActive() {
     return this.active;
   }
-  /*
+  /**
    * Return stage name
    * @return stageName
    */
   public String getStageName() {
     return this.stageName;
   }
-  /*
+  /**
    * Return planned start time
    * @return plannedTime
    */
   public IntervalTime getPlannedStartIntervalTime() {
     return plannedTime;
   }
-  /*
+  /**
    * Return if the stage is approved
    * @return approved
    */
   public boolean getApprovedStatus() {
     return this.approved;
   }
-  /*
+  /**
    * Return capsules
    * @return capsules
    */
   public Capsule[] getCapsules() {
     return this.capsules;
   }
-  /*
+  /**
    * Show real interval time
    * @return realTime
    */
@@ -102,33 +102,34 @@ public class Stage {
     this.setRealIntervalTime(new IntervalTime(this.startDate, this.endDate));
     return this.realTime.toString();
   }
-  /*
+  /**
    * Set planned interval time
+   * @param plannedTime of the stage
    */
   public void setPlannedIntervalTime(IntervalTime plannedTime) {
     this.plannedTime = plannedTime;
   }
-  /*
+  /**
    * Set stage as active
    */
   public void setActive() {
     this.active = true;
     this.startDate = new GregorianCalendar();
   }
-  /*
+  /**
    * Set stage as inactive
    */
   public void setInactive() {
     this.active = false;
     this.endDate = new GregorianCalendar();
   }
-  /*
+  /**
    * Set stage as approved
    */
   public void setApproved() {
     this.approved = true;
   }
-  /*
+  /**
    * Set real interval time
    */
   private void setRealIntervalTime(IntervalTime time) {

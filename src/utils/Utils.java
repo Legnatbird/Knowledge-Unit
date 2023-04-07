@@ -5,31 +5,37 @@ import java.util.Scanner;
 import java.io.Console;
 import model.Project;
 
-/*
+/**
  * Utils class
  */
 public class Utils {
 
-  /*
+  /**
    * This class contains all repeated methods and variables in the project
    */
   public static Scanner inputNumbers = new Scanner(System.in);
 
+  /**
+   * Reading of strings with spaces and special characters utf-8
+   */
   public static Console inputString = System.console();
 
   private static final String[] types = { "Technician", "Management", "Domain", "Experience" };
 
-  /*
+  /**
    * Print method
+   * @param uwu object to be printed
    */
   public static void print(Object uwu) {
     System.out.println(uwu);
   }
 
-  /*
+  /**
    * Set a date with year, month and day
-   * 
-   * @return GregorianCalendar
+   * @param year of the date
+   * @param month of the date
+   * @param day of the date
+   * @return GregorianCalendar date
    */
   public static GregorianCalendar getGregorianCalendar(int year, int month, int day) {
     GregorianCalendar date = new GregorianCalendar();
@@ -37,7 +43,7 @@ public class Utils {
     return date;
   }
 
-  /*
+  /**
    * Print menu
    */
   public static void menu() {
@@ -54,9 +60,8 @@ public class Utils {
     print("11. Exit");
   }
 
-  /*
+  /**
    * Validate if the input has a keyword with # # format and return it
-   * 
    * @return String
    */
   public static String validateLearning() {
@@ -69,9 +74,8 @@ public class Utils {
     }
   }
 
-  /*
+  /**
    * Validate if the input is a type of capsule and return it
-   * 
    * @return type
    */
   public static String validateType() {
@@ -84,9 +88,9 @@ public class Utils {
     print("Type must be Technician, Management, Domain or Experience");
     return validateType();
   }
-  /*
+  /**
    * Validate the index of the type of capsule
-   * 
+   * @param type of capsule
    * @return index of the type
    */
   public static int validateCapsule(String type) {
@@ -98,10 +102,11 @@ public class Utils {
     return -1;
   }
 
-  /*
+  /**
    * Return the index of the project with most capsules
-   * 
-   * @return index of the project
+   * @param projects array
+   * @param projectCount of the array
+   * @return index of the project with most capsules
    */
   public static int projectWithMostCapsules(Project[] projects, int projectCount) {
     if (projects == null || projectCount < 1) {
@@ -121,6 +126,12 @@ public class Utils {
     return index;
   }
 
+  /**
+   * Check if a collaborator do a capsule
+   * @param collabName of the collaborator
+   * @param projects array
+   * @param projectCount of the array
+   */
   public static void checkCollabCapsules(Project[] projects, String collabName, int projectCount) {
     if (projects == null || projectCount < 1) {
       return;
@@ -137,6 +148,13 @@ public class Utils {
     }
   }
 
+  /**
+   * Check learnings of approved capsules by keyword
+   * @param projects array
+   * @param keyword to be searched
+   * @param projectCount of the array
+   * @return learning of the capsule
+   */
   public static String checkLearningByKeyword(Project[] projects, String keyword, int projectCount) {
     if (projects == null || projectCount < 1) {
       Utils.print("There are no projects");

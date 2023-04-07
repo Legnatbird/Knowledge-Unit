@@ -4,6 +4,9 @@ import model.Capsule;
 import model.Project;
 import utils.Utils;
 
+/**
+ * Main class
+ */
 public class Main {
   private static final Project[] projects = new Project[10];
   private static final int[] capsuleCount = new int[4];
@@ -11,7 +14,7 @@ public class Main {
   private static int projectCount = 0;
   private static int projectId;
 
-  /*
+  /**
    * Validate project number and return it if valid
    * @return projectId
    */
@@ -24,7 +27,7 @@ public class Main {
     }
     return projectId;
   }
-  /*
+  /**
    * Main method
    * @param args but not used
    */

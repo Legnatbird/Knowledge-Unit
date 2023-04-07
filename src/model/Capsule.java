@@ -3,7 +3,7 @@ package model;
 import java.util.GregorianCalendar;
 import utils.Utils;
 
-/* 
+/**
  * Capsule class
  */
 public class Capsule {
@@ -17,13 +17,13 @@ public class Capsule {
   private final String learning;
   private int id;
 
-  /*
-   * Constructor
-   * @param collaboratorName
-   * @param collaboratorPost
-   * @param description
-   * @param learning
-   * @param type
+  /**
+   * Constructor of the class
+   * @param collaboratorName name of the collaborator
+   * @param collaboratorPost position of the collaborator
+   * @param description description of the capsule
+   * @param learning learning of the capsule
+   * @param type type of the capsule
    */
   public Capsule(String collaboratorName, String collaboratorPost, String description, String learning, String type) {
     this.collaboratorName = collaboratorName;
@@ -35,7 +35,7 @@ public class Capsule {
     this.id = (int) (Math.random() * 1000000);
     Utils.print("Capsule created");
   }
-  /*
+  /**
    * Generate HTML
    */
   public void generateHTML() {
@@ -46,7 +46,7 @@ public class Capsule {
       Utils.print("Capsule not approved");
     }
   }
-  /*
+  /**
    * Print capsule information
    */
   public void printCapsule() {
@@ -59,7 +59,7 @@ public class Capsule {
     Utils.print("Date: " + this.date);
     Utils.print("Approved: " + this.approved);
   }
-  /*
+  /**
    * Set capsule as approved
    */
   public void setApproved() {
@@ -67,13 +67,14 @@ public class Capsule {
     this.date = new GregorianCalendar();
     Utils.print("Capsule approved");
   }
-  /*
+  /**
    * Set capsule id
+   * @param id capsule id
    */
   public void setId(int id) {
     this.id = id;
   }
-  /*
+  /**
    * Get capsule keywords
    * @return keywords
    */
@@ -101,7 +102,7 @@ public class Capsule {
     return keyword;
     */
   }
-  /*
+  /**
    * Get capsule id
    * @return id
    */
@@ -109,10 +110,18 @@ public class Capsule {
     return id;
   }
 
+  /**
+   * Get capsule type
+   * @return type
+   */
   public String getType() {
     return type;
   }
 
+  /**
+   * Get capsule learning
+   * @return learning
+   */
   public String getLearning() {
     StringBuilder learning = new StringBuilder();
     for (int i = 0; i < this.learning.length(); i++) {
@@ -124,10 +133,18 @@ public class Capsule {
     return learning.toString();
   }
 
+  /**
+   * Get capsule collaborator name
+   * @return collaborator name
+   */
   public String getCollabName() {
     return collaboratorName;
   }
 
+  /**
+   * Get capsule approve status
+   * @return approve status
+   */
   public boolean getApproved() {
     return approved;
   }

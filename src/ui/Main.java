@@ -27,9 +27,21 @@ public class Main {
     }
     return projectId;
   }
+
+  /**
+   * Check if there are projects created
+   * @return true if there are no projects, false if there are projects
+   */
+  private static boolean projectExistence() {
+    if (projectCount == 0) {
+      Utils.print("No projects found, please create a project first.");
+      return true;
+    }
+    return false;
+  }
   /**
    * Main method
-   * @param args but not used
+   * @param args console args but not used in this case
    */
   public static void main(String[] args) {
     int option, capsuleId;
@@ -97,6 +109,7 @@ public class Main {
             Utils.print("Error: " + e);
           }
         case 6:
+          if (projectExistence()) break;
           Utils.print("The number of capsules by type is: ");
           Utils.print("1. " + capsuleCount[0] + " capsules of type Technician");
           Utils.print("2. " + capsuleCount[1] + " capsules of type Management");
@@ -111,6 +124,7 @@ public class Main {
           }
           break;
         case 8:
+          if (projectExistence()) break;
           int maxCapsules = Utils.projectWithMostCapsules(projects, projectCount);
           if (maxCapsules != -1) {
             Utils.print("The project with most capsules is: " + projects[maxCapsules].getProjectName());
@@ -119,11 +133,13 @@ public class Main {
           }
           break;
         case 9:
+          if (projectExistence()) break;
           Utils.print("Insert collaborator name: ");
           collabName = Utils.inputString.readLine();
           Utils.checkCollabCapsules(projects, collabName, projectCount);
           break;
         case 10:
+          if (projectExistence()) break;
           Utils.print("Insert keyword: ");
           String keyword = Utils.inputString.readLine();
           Utils.print(Utils.checkLearningByKeyword(projects, keyword, projectCount));

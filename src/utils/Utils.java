@@ -32,14 +32,17 @@ public class Utils {
 
   /**
    * Set a date with year, month and day
-   * @param year of the date
-   * @param month of the date
-   * @param day of the date
    * @return GregorianCalendar date
    */
-  public static GregorianCalendar getGregorianCalendar(int year, int month, int day) {
+  public static GregorianCalendar getGregorianCalendar() {
     GregorianCalendar date = new GregorianCalendar();
-    date.set(year, month, day);
+    print("Insert year:");
+    int year = Utils.inputNumbers.nextInt();
+    print("Insert month:");
+    int month = Utils.inputNumbers.nextInt();
+    print("Insert day:");
+    int day = Utils.inputNumbers.nextInt();
+    date.set(year, month - 1, day);
     return date;
   }
 

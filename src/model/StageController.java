@@ -5,7 +5,7 @@ import utils.Utils;
 /**
  * Stage class
  */
-public class Stages {
+public class StageController {
 
   private final Stage[] stages = new Stage[6];
   private int activeStage = 0;
@@ -13,7 +13,7 @@ public class Stages {
    * Constructor
    * Create all stages
    */
-  public Stages() {
+  public StageController() {
     createStages();
   }
   /**

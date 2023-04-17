@@ -20,7 +20,7 @@ public class Project {
   private String[] projectManagersName;
   private String projectName;
   private String clientName;
-  private Stages stages;
+  private StageController stages;
   private float budget;
   private State state;
 
@@ -34,37 +34,7 @@ public class Project {
    * Approve project
    */
   public void approve() {
-    this.state = State.APPROVED;
-    Utils.print("Project approved");
-    Utils.print("Insert project name:");
-    this.projectName = Utils.inputString.readLine();
-    Utils.print("Insert client name:");
-    this.clientName = Utils.inputString.readLine();
-    Utils.print("Insert planned date of start:");
-    this.plannedDateOfStart = this.getDate();
-    Utils.print("Insert planned date of end:");
-    this.plannedDateOfEnd = this.getDate();
-    Utils.print("Insert budget:");
-    this.budget = Utils.inputNumbers.nextFloat();
-    Utils.print("Insert project managers name:");
-    this.projectManagersName = Utils.inputString.readLine().split(",");
-    Utils.print("Insert project managers phone:");
-    this.projectManagersPhone = Utils.inputString.readLine().split(",");
-    this.stages = new Stages();
-    Utils.print("Setups completed");
-  }
-  /**
-   * Get date
-   * @return GregorianCalendar
-   */
-  private GregorianCalendar getDate() {
-    Utils.print("Insert year:");
-    int year = Utils.inputNumbers.nextInt();
-    Utils.print("Insert month:");
-    int month = Utils.inputNumbers.nextInt();
-    Utils.print("Insert day:");
-    int day = Utils.inputNumbers.nextInt();
-    return Utils.getGregorianCalendar(year, month, day);
+    this.stages = new StageController();
   }
   /**
    * Reject project
@@ -133,7 +103,7 @@ public class Project {
    * Get stages
    * @return Stages
    */
-  public Stages getStages() {
+  public StageController getStages() {
     return this.stages;
   }
 
@@ -194,5 +164,37 @@ public class Project {
       }
     }
     return capsules;
+  }
+
+  public void setState(String state) {
+    this.state = State.valueOf(state);
+  }
+
+  public void setProjectName(String name) {
+    this.projectName = name;
+  }
+
+  public void setClientName(String name) {
+    this.clientName = name;
+  }
+
+  public void setBudget(float budget) {
+    this.budget = budget;
+  }
+
+  public void setProjectManagersName(String[] name) {
+    this.projectManagersName = name;
+  }
+
+  public void setProjectManagersPhone(String[] phone) {
+    this.projectManagersPhone = phone;
+  }
+
+  public void setPlannedDateOfStart(GregorianCalendar date) {
+    this.plannedDateOfStart = date;
+  }
+
+  public void setPlannedDateOfEnd(GregorianCalendar date) {
+    this.plannedDateOfEnd = date;
   }
 }

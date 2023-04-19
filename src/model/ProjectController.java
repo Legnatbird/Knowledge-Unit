@@ -4,12 +4,17 @@ import utils.Utils;
 
 public class ProjectController {
   private final Project[] projects = new Project[10];
-  private int projectCount = 0;
+  private short projectCount = 0;
   public ProjectController() {
 
   }
 
   public void createProject() {
+    short MAX_PROJECTS = 10;
+    if (projectCount == MAX_PROJECTS) {
+      Utils.print("ERROR: Maximum number of projects reached.");
+      return;
+    }
     projects[projectCount] = new Project();
     projects[projectCount].setState("Waiting for approval");
     Utils.print("Until the project is approved, you can only wait for approval or reject it");
@@ -39,5 +44,20 @@ public class ProjectController {
 
   public void getProjectState(int projectNumber) {
     projects[projectNumber - 1].getState();
+  }
+
+  public short getProjectCount() {
+    return projectCount;
+  }
+
+  public Project getProject(int projectNumber) {
+    return projects[projectNumber - 1];
+  }
+  public Project[] getAllProjects() {
+    return projects;
+  }
+
+  public void setActiveStage(int projectNumber, int stageNumber) {
+    projects[projectNumber - 1].setActiveStage(stageNumber);
   }
 }

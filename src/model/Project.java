@@ -103,8 +103,8 @@ public class Project {
    * Get stages
    * @return Stages
    */
-  public StageController getStages() {
-    return this.stages;
+  public Stage[] getStages() {
+    return this.stages.getStages();
   }
 
   /**
@@ -196,5 +196,9 @@ public class Project {
 
   public void setPlannedDateOfEnd(GregorianCalendar date) {
     this.plannedDateOfEnd = date;
+  }
+
+  public void setActiveStage(int stage) {
+    this.stages.setStageActive(stage);
   }
 }

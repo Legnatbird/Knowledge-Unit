@@ -31,11 +31,11 @@ public class Stage {
    */
   public void addCapsule(Capsule capsule) {
     // Check if the number of capsules is less than 50
-    if (this.capsuleCount == 50) {
+    if (50 == this.capsuleCount) {
       Utils.print("You can't add more than 50 capsules to a stage");
       return;
     }
-    this.capsules[capsuleCount] = capsule;
+    this.capsules[this.capsuleCount] = capsule;
     // Check if the capsule id is already in use and generate a new one if it is
     for (int i = 0; i < this.capsuleCount; i++) {
       if (this.capsules[i].getId() == capsule.getId()) {

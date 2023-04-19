@@ -47,19 +47,6 @@ public class Capsule {
     }
   }
   /**
-   * Print capsule information
-   */
-  public void printCapsule() {
-    Utils.print("Collaborator: " + this.collaboratorName);
-    Utils.print("Collaborator Position: " + this.collaboratorPost);
-    Utils.print("Description: " + this.description);
-    Utils.print("Type: " + this.type);
-    Utils.print("Learning: " + this.learning);
-    Utils.print("Id: " + this.id);
-    Utils.print("Date: " + this.date);
-    Utils.print("Approved: " + this.approved);
-  }
-  /**
    * Set capsule as approved
    */
   public void setApproved() {

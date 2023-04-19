@@ -60,4 +60,30 @@ public class ProjectController {
   public void setActiveStage(int projectNumber, int stageNumber) {
     projects[projectNumber - 1].setActiveStage(stageNumber);
   }
+
+  /**
+   * Check if there are projects created
+   * @return true if there are no projects, false if there are projects
+   */
+  public boolean projectExistence() {
+    if (this.projectCount == 0) {
+      Utils.print("No projects found, please create a project first.");
+      return true;
+    }
+    return false;
+  }
+
+  /**
+   * Validate project number and return it if valid
+   * @return projectId
+   */
+  public int validateProject(){
+    Utils.print("Insert project number: ");
+    int projectId = Utils.inputNumbers.nextInt();
+    if (projectId > projectCount || projectId < 1) {
+      Utils.print("Invalid project number");
+      return validateProject();
+    }
+    return projectId;
+  }
 }

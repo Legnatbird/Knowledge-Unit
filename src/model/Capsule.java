@@ -135,4 +135,28 @@ public class Capsule {
   public boolean getApproved() {
     return approved;
   }
+
+  /**
+   * Get capsule collaborator post
+   * @return collaborator post
+   */
+  public String getCollaboratorPost() {
+    return collaboratorPost;
+  }
+
+  /**
+   * Get capsule description
+   * @return description
+   */
+  public String getDescription() {
+    return description;
+  }
+
+  /**
+   * Get capsule date
+   * @return date
+   */
+  public GregorianCalendar getDate() {
+    return date;
+  }
 }

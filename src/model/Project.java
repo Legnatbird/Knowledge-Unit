@@ -166,38 +166,74 @@ public class Project {
     return capsules;
   }
 
+  /**
+   * Set state of project
+   * @param state String
+   */
   public void setState(String state) {
     this.state = State.valueOf(state);
   }
 
+  /**
+   * Set project name
+   * @param name String
+   */
   public void setProjectName(String name) {
     this.projectName = name;
   }
 
+  /**
+   * Set client name
+   * @param name String
+   */
   public void setClientName(String name) {
     this.clientName = name;
   }
 
+  /**
+   * Set budget
+   * @param budget float
+   */
   public void setBudget(float budget) {
     this.budget = budget;
   }
 
+  /**
+   * Set project managers name
+   * @param name String[]
+   */
   public void setProjectManagersName(String[] name) {
     this.projectManagersName = name;
   }
 
+  /**
+   * Set project managers phone
+   * @param phone String[]
+   */
   public void setProjectManagersPhone(String[] phone) {
     this.projectManagersPhone = phone;
   }
 
+  /**
+   * Set planned date of start
+   * @param date GregorianCalendar
+   */
   public void setPlannedDateOfStart(GregorianCalendar date) {
     this.plannedDateOfStart = date;
   }
 
+  /**
+   * Set planned date of end
+   * @param date GregorianCalendar
+   */
   public void setPlannedDateOfEnd(GregorianCalendar date) {
     this.plannedDateOfEnd = date;
   }
 
+  /**
+   * Set active stage
+   * @param stage integer
+   */
   public void setActiveStage(int stage) {
     this.stages.setStageActive(stage);
   }

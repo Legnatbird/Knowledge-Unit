@@ -2,13 +2,24 @@ package model;
 
 import utils.Utils;
 
+/**
+ * CapsuleController class
+ */
 public class CapsuleController {
 
   private final int[] capsuleCount = new int[4];
 
+  /**
+   * CapsuleController constructor
+   */
   public CapsuleController() {
 
   }
+
+  /**
+   * Creates a capsule
+   * @return the capsule created
+   */
   public Capsule createCapsule() {
     Utils.print("Insert collaborator name: ");
     String collabName = Utils.inputString.readLine();
@@ -29,6 +40,9 @@ public class CapsuleController {
     return new Capsule(collabName, collabPost, description, learning, type);
   }
 
+  /**
+   * Prints the number of capsules by type
+   */
   public void printCapsulesByType(){
     Utils.print("The number of capsules by type is: ");
     Utils.print("1. " + capsuleCount[0] + " capsules of type Technician");

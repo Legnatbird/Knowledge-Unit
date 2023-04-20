@@ -2,13 +2,23 @@ package model;
 
 import utils.Utils;
 
+/**
+ * Project controller class
+ */
 public class ProjectController {
   private final Project[] projects = new Project[10];
   private short projectCount = 0;
+
+  /**
+   * Project controller constructor
+   */
   public ProjectController() {
 
   }
 
+  /**
+   * Create a new project
+   */
   public void createProject() {
     short MAX_PROJECTS = 10;
     if (projectCount == MAX_PROJECTS) {
@@ -18,9 +28,15 @@ public class ProjectController {
     projects[projectCount] = new Project();
     projects[projectCount].setState("Waiting for approval");
     Utils.print("Until the project is approved, you can only wait for approval or reject it");
+    Utils.print("Joking, your project is approved");
+    approveProject(projectCount + 1);
     projectCount++;
   }
 
+  /**
+   * approve a project
+   * @param projectNumber project number
+   */
   public void approveProject(int projectNumber) {
     projects[projectNumber - 1].setState("Approved");
     Utils.print("Project approved");
@@ -42,21 +58,44 @@ public class ProjectController {
     Utils.print("Setups completed");
   }
 
+  /**
+   * get project state
+   * @param projectNumber project number
+   */
   public void getProjectState(int projectNumber) {
     projects[projectNumber - 1].getState();
   }
 
+  /**
+   * get project count
+   * @return projectCount
+   */
   public short getProjectCount() {
     return projectCount;
   }
 
+  /**
+   * get project
+   * @param projectNumber project number
+   * @return project
+   */
   public Project getProject(int projectNumber) {
     return projects[projectNumber - 1];
   }
+
+  /**
+   * get all projects
+   * @return projects[]
+   */
   public Project[] getAllProjects() {
     return projects;
   }
 
+  /**
+   * set active stage
+   * @param projectNumber project number
+   * @param stageNumber stage number
+   */
   public void setActiveStage(int projectNumber, int stageNumber) {
     projects[projectNumber - 1].setActiveStage(stageNumber);
   }

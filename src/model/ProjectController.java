@@ -20,7 +20,7 @@ public class ProjectController {
    * Create a new project
    */
   public void createProject() {
-    short MAX_PROJECTS = 10;
+    final short MAX_PROJECTS = 10;
     if (projectCount == MAX_PROJECTS) {
       Utils.print("ERROR: Maximum number of projects reached.");
       return;

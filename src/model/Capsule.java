@@ -66,28 +66,7 @@ public class Capsule {
    * @return keywords
    */
   public String getKeywords() {
-    String keywords = "";
-    for (int i = 0; i < this.learning.length(); i++) {
-      if (this.learning.charAt(i) == '#') {
-        keywords = this.learning.substring(i + 1, this.learning.indexOf('#', i + 1));
-      }
-    }
-    return keywords;
-    /*
-    I really not test the code up, but I think it's better than the code below
-    String keyword = "";
-    for (int i = 0; i < this.learning.length(); i++) {
-      if (this.learning.charAt(i) == '#') {
-        for (int j = i + 1; j < this.learning.length(); j++) {
-          if (this.learning.charAt(j) == '#') {
-            return keyword;
-          }
-          keyword += this.learning.charAt(j);
-        }
-      }
-    }
-    return keyword;
-    */
+    return this.learning.substring(0, this.learning.lastIndexOf('#'));
   }
   /**
    * Get capsule id
@@ -110,14 +89,7 @@ public class Capsule {
    * @return learning
    */
   public String getLearning() {
-    StringBuilder learning = new StringBuilder();
-    for (int i = 0; i < this.learning.length(); i++) {
-      if (this.learning.charAt(i) == '#') {
-        i = this.learning.indexOf('#', i + 1);
-      }
-      learning.append(this.learning.charAt(i));
-    }
-    return learning.toString();
+    return this.learning.substring(this.learning.indexOf('#', this.learning.indexOf('#') + 1) + 1);
   }
 
   /**

@@ -78,7 +78,12 @@ public class Stage {
    * @return capsules
    */
   public Capsule[] getCapsules() {
-    return this.capsules;
+    // return capsules without null values
+    Capsule[] capsules = new Capsule[this.capsuleCount];
+    for (int i = 0; i < this.capsuleCount; i++) {
+      capsules[i] = this.capsules[i];
+    }
+    return capsules;
   }
   /**
    * Show real interval time

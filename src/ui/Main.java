@@ -36,53 +36,59 @@ public class Main {
       Utils.menu();
       option = Utils.inputNumbers.nextInt();
       switch (option) {
-        case 1 -> projects.createProject();
+        case 1 -> {
+          projects.createProject();
+          Utils.print("The project number is: " + projects.getProjectCount());
+        }
         case 2 -> {
           projectId = projects.validateProject();
-          Utils.print("Stage number: ");
-          stage = Utils.inputNumbers.nextInt();
-          if (stage <= 0 || stage > projects.getProject(projectId - 1).getStages().length) {
-            Utils.print("Invalid stage number");
-          } else {
-            projects.getProject(projectId - 1).setActiveStage((short) stage);
-          }
+          projects.getProject(projectId).switchStage();
+          String actualStage = projects.getProject(projectId).getStage().getStageName();
+          Utils.print("The project stage has been changed and now is: " + actualStage);
         }
         case 3 -> {
           projectId = projects.validateProject();
-          projects.getProject(projectId - 1).getStage().addCapsule(capsules.createCapsule());
+          String actualStage = projects.getProject(projectId).getStage().getStageName();
+          Utils.print("Remember the stage is: " + actualStage);
+          projects.getProject(projectId).getStage().addCapsule(capsules.createCapsule());
         }
         case 4 -> {
           projectId = projects.validateProject();
+          String actualStage = projects.getProject(projectId).getStage().getStageName();
+          Utils.print("Remember the stage is: " + actualStage);
           Utils.print("Insert capsule number: ");
           capsuleId = Utils.inputNumbers.nextInt();
-          if (capsuleId > projects.getProject(projectId - 1).getStage().getCapsules().length) {
+          if (capsuleId > projects.getProject(projectId).getStage().getCapsules().length) {
             Utils.print("The capsule number you entered is not valid. Please try again.");
             break;
           }
-          projects.getProject(projectId - 1).getStage().getCapsules()[capsuleId - 1].setApproved();
+          projects.getProject(projectId).getStage().getCapsules()[capsuleId - 1].setApproved();
         }
         case 5 -> {
           projectId = projects.validateProject();
+          String actualStage = projects.getProject(projectId).getStage().getStageName();
+          Utils.print("Remember the stage is: " + actualStage);
           Utils.print("Insert capsule number: ");
           capsuleId = Utils.inputNumbers.nextInt();
-          projects.getProject(projectId - 1).getStage().getCapsules()[capsuleId - 1].generateHTML();
+          projects.getProject(projectId).getStage().getCapsules()[capsuleId - 1].generateHTML();
         }
         case 6 -> {
           if (projects.projectExistence()) break;
           capsules.printCapsulesByType();
         }
         case 7 -> {
+          if (projects.projectExistence()) break;
           Utils.print("Insert stage number: ");
           stage = Utils.inputNumbers.nextInt();
           for (int i = 0; i < projects.getProjectCount(); i++) {
-            projects.getProject(i).showLearnings(stage);
+            projects.getProject(i + 1).showLearnings(stage);
           }
         }
         case 8 -> {
           if (projects.projectExistence()) break;
           int maxCapsules = Utils.projectWithMostCapsules(projects.getAllProjects(), projects.getProjectCount());
           if (maxCapsules != -1) {
-            Utils.print("The project with most capsules is: " + projects.getProject(maxCapsules).getProjectName());
+            Utils.print("The project with most capsules is: " + projects.getProject(maxCapsules + 1).getProjectName());
           } else {
             Utils.print("No projects found");
           }
@@ -99,9 +105,11 @@ public class Main {
           String keyword = Utils.inputString.readLine();
           Utils.print(Utils.checkLearningByKeyword(projects.getAllProjects(), keyword, projects.getProjectCount()));
         }
-        case 11 -> Utils.print("Bye, bye ^^");
+        case 11 -> {
+          Utils.print("Bye, bye :) ");
+        }
         default -> Utils.print("Invalid option");
       }
-    } while (option != 10);
+    } while (option != 11);
   }
 }

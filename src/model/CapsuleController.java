@@ -29,7 +29,7 @@ public class CapsuleController {
     String description = Utils.inputString.readLine();
     Utils.print("Insert learning: ");
     String learning = Utils.validateLearning();
-    Utils.print("Insert type: ");
+    Utils.print("Insert type (Technician, Management, Domain, Experience): ");
     String type = Utils.validateType();
     switch (Utils.validateCapsule(type)) {
       case 0 -> capsuleCount[0]++;

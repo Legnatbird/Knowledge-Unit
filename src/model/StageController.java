@@ -29,17 +29,16 @@ public class StageController {
   }
   /**
    * Set active stage
-   * @param stage to be set active
    */
-  public void setStageActive(short stage) {
-    if (stage > 0 && stage < 7) {
-      stages[activeStage].setApproved();
-      stages[activeStage].setInactive();
-      stages[stage - 1].setActive();
-      activeStage = (short) (stage - 1);
-    } else {
-      Utils.print("Stage number is out of range");
+  public void setStageActive() {
+    if (activeStage == 5) {
+      Utils.print("The project is already finished");
+      return;
     }
+    stages[activeStage].setApproved();
+    stages[activeStage].setInactive();
+    stages[activeStage + 1].setActive();
+    activeStage = (short) (activeStage + 1);
   }
   /**
    * Get active stage
@@ -47,6 +46,10 @@ public class StageController {
    */
   public Stage getActiveStage() {
     return stages[activeStage];
+  }
+
+  public short getActiveStageNumber() {
+    return activeStage;
   }
 
   /**

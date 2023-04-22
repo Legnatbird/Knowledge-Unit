@@ -56,9 +56,9 @@ public class Utils {
   public static void menu() {
     print("1. Create project");
     print("2. End actual project stage");
-    print("3. Create capsule");
-    print("4. Approve capsule");
-    print("5. Publish capsule");
+    print("3. Create capsule of actual project stage");
+    print("4. Approve capsule of actual project stage");
+    print("5. Publish capsule of actual project stage");
     print("6. Show capsules by type");
     print("7. Show learnings by stage");
     print("8. Check project with most capsules");
@@ -78,6 +78,8 @@ public class Utils {
       return learning;
     } else {
       print("Learning must contain a keyword with # at the beginning and at the end");
+      print("Example: #keyword#");
+      print("Insert learning:");
       return validateLearning();
     }
   }
@@ -117,15 +119,11 @@ public class Utils {
    * @return index of the project with most capsules
    */
   public static int projectWithMostCapsules(Project[] projects, int projectCount) {
-    // Check if the array is null or empty
-    if (projects == null || projectCount < 1) {
-      return -1;
-    }
     int max = 0;
     int index = 0;
     for (int i = 0; i < projectCount; i++) {
       if (projects[i] == null) {
-        return -1;
+        continue;
       }
       if (projects[i].capsulesLength() > max) {
         max = projects[i].capsulesLength();
@@ -167,23 +165,16 @@ public class Utils {
    * @return learning of the capsule
    */
   public static String checkLearningByKeyword(Project[] projects, String keyword, int projectCount) {
-    // Check if the array is null or empty
-    if (projects == null || projectCount < 1) {
-      Utils.print("There are no projects");
-      return null;
-    }
-    StringBuilder learning = new StringBuilder();
-    // Check if the keyword is in the capsule
+    // Check if the keyword is in the learning
     for (int i = 0; i < projectCount; i++) {
-      String validate = projects[i].getCapsuleByKeyword(keyword);
-      if (validate != null) {
-        learning.append(validate);
+      int length = projects[i].getCapsules().length;
+      for (int j = 0; j < length; j++) {
+        String validate = projects[i].getCapsules()[j].getKeywords();
+        if (validate.contains(keyword)) {
+          return projects[i].getCapsules()[j].getLearning();
+        }
       }
     }
-    if (learning.toString().equals("")) {
-      Utils.print("There are no capsules with the keyword " + keyword);
-      return null;
-    }
-    return learning.toString();
+    return "";
   }
 }

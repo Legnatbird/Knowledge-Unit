@@ -26,7 +26,6 @@ public class ProjectController {
       return;
     }
     projects[projectCount] = new Project();
-    projects[projectCount].setState("Waiting for approval");
     Utils.print("Until the project is approved, you can only wait for approval or reject it");
     Utils.print("Joking, your project is approved");
     approveProject(projectCount + 1);
@@ -38,10 +37,10 @@ public class ProjectController {
    * @param projectNumber project number
    */
   public void approveProject(int projectNumber) {
-    projects[projectNumber - 1].setState("Approved");
-    Utils.print("Project approved");
+    projects[projectNumber - 1].setState("APPROVED");
     Utils.print("Insert project name:");
     projects[projectNumber - 1].setProjectName(Utils.inputString.readLine());
+    Utils.print("Insert client name:");
     projects[projectNumber - 1].setClientName(Utils.inputString.readLine());
     Utils.print("Insert project start date:");
     projects[projectNumber - 1].setPlannedDateOfStart(Utils.getGregorianCalendar());
@@ -50,8 +49,10 @@ public class ProjectController {
     Utils.print("Insert budget:");
     float budget = Utils.inputNumbers.nextFloat();
     projects[projectNumber - 1].setBudget(budget);
+    Utils.print("Insert project managers name:");
     String[] managersName = Utils.inputString.readLine().split(" ");
     projects[projectNumber - 1].setProjectManagersName(managersName);
+    Utils.print("Insert project managers phone:");
     String[] managersPhone = Utils.inputString.readLine().split(" ");
     projects[projectNumber - 1].setProjectManagersPhone(managersPhone);
     projects[projectNumber - 1].approve();
@@ -92,15 +93,6 @@ public class ProjectController {
   }
 
   /**
-   * set active stage
-   * @param projectNumber project number
-   * @param stageNumber stage number
-   */
-  public void setActiveStage(int projectNumber, short stageNumber) {
-    projects[projectNumber - 1].setActiveStage(stageNumber);
-  }
-
-  /**
    * Check if there are projects created
    * @return true if there are no projects, false if there are projects
    */
@@ -116,7 +108,7 @@ public class ProjectController {
    * Validate project number and return it if valid
    * @return projectId
    */
-  public int validateProject(){
+  public int validateProject() {
     Utils.print("Insert project number: ");
     int projectId = Utils.inputNumbers.nextInt();
     if (projectId > projectCount || projectId < 1) {

@@ -11,7 +11,7 @@ public class Project {
    * Stages enum
    */
   enum State {
-    WAITING_FOR_APPROVAL, APPROVED, REJECTED
+    WAITING, APPROVED, REJECTED
   }
 
   private GregorianCalendar plannedDateOfStart;
@@ -28,7 +28,7 @@ public class Project {
    * Constructor
    */
   public Project() {
-    this.state = State.WAITING_FOR_APPROVAL;
+    this.state = State.WAITING;
   }
   /**
    * Approve project
@@ -47,14 +47,7 @@ public class Project {
    * Get state
    */
   public void getState() {
-    switch (this.state) {
-      case WAITING_FOR_APPROVAL:
-        Utils.print("Waiting for approval");
-      case APPROVED:
-        Utils.print("Approved");
-      case REJECTED:
-        Utils.print("Rejected");
-    }
+    Utils.print("State: " + this.state.toString());
   }
   /**
    * Get project managers name
@@ -106,7 +99,6 @@ public class Project {
   public Stage[] getStages() {
     return this.stages.getStages();
   }
-
   /**
    * Get stage
    * @return Stage active stage
@@ -234,8 +226,8 @@ public class Project {
    * Set active stage
    * @param stage integer
    */
-  public void setActiveStage(short stage) {
-    this.stages.setStageActive(stage);
+  public void switchStage() {
+    this.stages.setStageActive();
   }
 
   /**

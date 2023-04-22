@@ -24,6 +24,12 @@ public class Stage {
   public Stage(String name) {
     this.stageName = name;
     this.startDate = new GregorianCalendar();
+    Utils.print("Insert planned time of the stage: " + name);
+    Utils.print("Start date:");
+    GregorianCalendar startDate = Utils.getGregorianCalendar();
+    Utils.print("End date:");
+    GregorianCalendar endDate = Utils.getGregorianCalendar();
+    this.plannedTime = new IntervalTime(startDate, endDate);
   }
   /**
    * Set stage as active

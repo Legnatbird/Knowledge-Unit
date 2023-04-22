@@ -8,7 +8,7 @@ import utils.Utils;
 public class StageController {
 
   private final Stage[] stages = new Stage[6];
-  private int activeStage = 0;
+  private short activeStage = 0;
   /**
    * Constructor
    * Create all stages
@@ -31,12 +31,12 @@ public class StageController {
    * Set active stage
    * @param stage to be set active
    */
-  public void setStageActive(int stage) {
+  public void setStageActive(short stage) {
     if (stage > 0 && stage < 7) {
       stages[activeStage].setApproved();
       stages[activeStage].setInactive();
       stages[stage - 1].setActive();
-      activeStage = stage - 1;
+      activeStage = (short) (stage - 1);
     } else {
       Utils.print("Stage number is out of range");
     }

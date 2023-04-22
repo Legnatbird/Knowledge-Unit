@@ -46,20 +46,6 @@ public class Stage {
     this.capsuleCount++;
   }
   /**
-   * Search for a capsule by keyword
-   * @param keyword to be searched
-   * @return capsule information
-   */
-  public Capsule searchCapsuleByKeyword(String keyword) {
-    for (int i = 0; i < this.capsuleCount; i++) {
-      if (this.capsules[i].getKeyWords().contains(keyword)) {
-        return this.capsules[i];
-      }
-    }
-    Utils.print("Capsule not found");
-    return null;
-  }
-  /**
    * Return if the stage is active
    * @return active
    */

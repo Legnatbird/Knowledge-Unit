@@ -96,7 +96,7 @@ public class ProjectController {
    * @param projectNumber project number
    * @param stageNumber stage number
    */
-  public void setActiveStage(int projectNumber, int stageNumber) {
+  public void setActiveStage(int projectNumber, short stageNumber) {
     projects[projectNumber - 1].setActiveStage(stageNumber);
   }
 

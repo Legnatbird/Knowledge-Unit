@@ -18,9 +18,9 @@ public class Project {
   private GregorianCalendar plannedDateOfEnd;
   private String[] projectManagersPhone;
   private String[] projectManagersName;
+  private StageController stages;
   private String projectName;
   private String clientName;
-  private StageController stages;
   private float budget;
   private State state;
 
@@ -234,7 +234,21 @@ public class Project {
    * Set active stage
    * @param stage integer
    */
-  public void setActiveStage(int stage) {
+  public void setActiveStage(short stage) {
     this.stages.setStageActive(stage);
+  }
+
+  /**
+   * Get capsule by keyword
+   * @param keyword String
+   * @return String capsule
+   */
+  public String getCapsuleByKeyword(String keyword) {
+    for (Capsule capsule : getCapsules()) {
+      if (capsule.getKeywords().equals(keyword)) {
+        return capsule.getLearning();
+      }
+    }
+    return "";
   }
 }

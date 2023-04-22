@@ -65,7 +65,7 @@ public class Capsule {
    * Get capsule keywords
    * @return keywords
    */
-  public String getKeyWords() {
+  public String getKeywords() {
     String keywords = "";
     for (int i = 0; i < this.learning.length(); i++) {
       if (this.learning.charAt(i) == '#') {

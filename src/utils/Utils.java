@@ -42,7 +42,11 @@ public class Utils {
     int month = Utils.inputNumbers.nextInt();
     print("Insert day:");
     int day = Utils.inputNumbers.nextInt();
-    date.set(year, month - 1, day);
+    /*
+    The linter said that the month must be Calendar.MONTH type, but the method receives an int and transform
+    it to Calendar.MONTH type, so I ignored the linter in this case
+     */
+    date.set(year,month - 1, day);
     return date;
   }
 
@@ -69,6 +73,7 @@ public class Utils {
    */
   public static String validateLearning() {
     String learning = inputString.readLine();
+    // Check if the input has a keyword with # # format
     if (learning.contains("#") && learning.lastIndexOf("#") != 0) {
       return learning;
     } else {
@@ -112,6 +117,7 @@ public class Utils {
    * @return index of the project with most capsules
    */
   public static int projectWithMostCapsules(Project[] projects, int projectCount) {
+    // Check if the array is null or empty
     if (projects == null || projectCount < 1) {
       return -1;
     }
@@ -136,10 +142,12 @@ public class Utils {
    * @param projectCount of the array
    */
   public static void checkCollabCapsules(Project[] projects, String collabName, int projectCount) {
+    // Check if the array is null or empty
     if (projects == null || projectCount < 1) {
       return;
     }
     print("Enter the collaborator name");
+    // Check if the collaborator do a capsule in the project
     for (int i = 0; i < projectCount; i++) {
       int length = projects[i].getCapsules().length;
       for (int j = 0; j < length; j++) {
@@ -159,23 +167,23 @@ public class Utils {
    * @return learning of the capsule
    */
   public static String checkLearningByKeyword(Project[] projects, String keyword, int projectCount) {
+    // Check if the array is null or empty
     if (projects == null || projectCount < 1) {
       Utils.print("There are no projects");
       return null;
     }
+    StringBuilder learning = new StringBuilder();
+    // Check if the keyword is in the capsule
     for (int i = 0; i < projectCount; i++) {
-      int length = projects[i].getCapsules().length;
-      for (int j = 0; j < length; j++) {
-        if (!projects[i].getCapsules()[j].getApproved()) {
-          continue;
-        }
-        String validate = projects[i].getCapsules()[j].getLearning();
-        if (validate.contains(keyword)) {
-          return validate;
-        }
+      String validate = projects[i].getCapsuleByKeyword(keyword);
+      if (validate != null) {
+        learning.append(validate);
       }
     }
-    Utils.print("There are no learnings with the keyword " + keyword);
-    return null;
+    if (learning.toString().equals("")) {
+      Utils.print("There are no capsules with the keyword " + keyword);
+      return null;
+    }
+    return learning.toString();
   }
 }

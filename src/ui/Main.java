@@ -8,13 +8,28 @@ import utils.Utils;
  * Main class
  */
 public class Main {
+  // Project controller
   private static final ProjectController projects = new ProjectController();
+  /**
+    Capsule controller, this is tricky because every project has a stage and every stage has capsules
+    so for handle this we need to create a capsule controller and use it in the main class
+    with this we optimize the code, and we don't need to create a capsule controller in every project
+    and when we need to create a capsule we just call the capsule controller and create a capsule,
+    the most interesting thing is we store all the capsules in the capsule controller, and we can
+    access to them from every project and stage for example if we want to know how many capsules
+    we have we just call the capsule controller and ask for the capsule count or if we want to
+    know the capsule type we just call the capsule controller and ask for the capsule type.
+  */
   private static final CapsuleController capsules = new CapsuleController();
   /**
    * Main method
    * @param args console args but not used in this case
    */
   public static void main(String[] args) {
+    /*
+      This is the main menu, here we have a switch case with all the options
+      and, we use a do while loop to keep the menu until the user choose the exit option
+    */
     int option, capsuleId, projectId, stage;
     String collabName;
     do {
@@ -29,7 +44,7 @@ public class Main {
           if (stage <= 0 || stage > projects.getProject(projectId - 1).getStages().length) {
             Utils.print("Invalid stage number");
           } else {
-            projects.getProject(projectId - 1).setActiveStage(stage);
+            projects.getProject(projectId - 1).setActiveStage((short) stage);
           }
         }
         case 3 -> {
@@ -84,7 +99,7 @@ public class Main {
           String keyword = Utils.inputString.readLine();
           Utils.print(Utils.checkLearningByKeyword(projects.getAllProjects(), keyword, projects.getProjectCount()));
         }
-        case 11 -> Utils.print("Exit.");
+        case 11 -> Utils.print("Bye, bye ^^");
         default -> Utils.print("Invalid option");
       }
     } while (option != 10);

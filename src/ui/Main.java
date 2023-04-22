@@ -105,9 +105,7 @@ public class Main {
           String keyword = Utils.inputString.readLine();
           Utils.print(Utils.checkLearningByKeyword(projects.getAllProjects(), keyword, projects.getProjectCount()));
         }
-        case 11 -> {
-          Utils.print("Bye, bye :) ");
-        }
+        case 11 -> Utils.print("Bye, bye :)");
         default -> Utils.print("Invalid option");
       }
     } while (option != 11);

@@ -80,9 +80,7 @@ public class Stage {
   public Capsule[] getCapsules() {
     // return capsules without null values
     Capsule[] capsules = new Capsule[this.capsuleCount];
-    for (int i = 0; i < this.capsuleCount; i++) {
-      capsules[i] = this.capsules[i];
-    }
+    System.arraycopy(this.capsules, 0, capsules, 0, this.capsuleCount);
     return capsules;
   }
   /**

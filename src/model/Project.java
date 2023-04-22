@@ -224,23 +224,8 @@ public class Project {
 
   /**
    * Set active stage
-   * @param stage integer
    */
   public void switchStage() {
     this.stages.setStageActive();
-  }
-
-  /**
-   * Get capsule by keyword
-   * @param keyword String
-   * @return String capsule
-   */
-  public String getCapsuleByKeyword(String keyword) {
-    for (Capsule capsule : getCapsules()) {
-      if (capsule.getKeywords().equals(keyword)) {
-        return capsule.getLearning();
-      }
-    }
-    return "";
   }
 }
